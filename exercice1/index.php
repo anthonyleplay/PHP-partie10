@@ -121,7 +121,7 @@ require_once 'controller.php';
 
                         </fieldset>
                         <fieldset class="col-12 pt-3">
-                            <?= isset($errorArray) ? "<span style=\"color: darkred;\">merci de remplir correctement tout les champs</span><br>" : "" ?>
+                            <?= !empty($errorArray) ? "<span style=\"color: darkred;\">merci de remplir correctement tout les champs</span><br>" : "" ?>
                             <input class="py-2 px-4 mb-3 rounded-lg bg-dark text-light" type="submit" value="Envoyer">
                         </fieldset>
                     </form>
@@ -155,16 +155,11 @@ require_once 'controller.php';
                             <p><b><?= htmlspecialchars($_POST["programExperience"]) ?></b></p>
 
                         </div>
-
-
-
                     </div>
                 <?php } ?>
             </div>
         </div>
     </div>
-
-
 
 </body>
 
