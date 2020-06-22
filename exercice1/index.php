@@ -5,8 +5,8 @@ $errorArray = [];
 $lastNameRegex = "/^[a-zA-Zéèêëiîïôöüäç ]{1,15}[- \"]{0,1}[a-zA-Zéèêëiîïôöüäç ]{0,18}[- \"]{0,1}[a-zA-Zéèêëiîïôöüäç ]{1,10}/";
 $firstNameRegex = "/^[a-zA-Zéèêëiîïôöüäç]{2,12}[-]?[a-zA-Zéèêëiîïôöüäç]{2,12}/";
 $addressRegex = "/^[1-9]{1}+[0-9]{0,2}[, ]{1}[ a-zA-Zéèêëiîïôöüäàç]{1,11}[, \"-]{1}?[ a-zA-Zéèêëiîïôöüäàç]{2,12}?[, \"-]{0,1}?[ a-zA-Zéèêëiîïôöüäàç]{0,12}?[, \"-]{0,1}?[ a-zA-Zéèêëiîïôöüäàç]{1,12}?$/";
-$shortString = "/^[A-Z]{0,1}[a-zéèêëiîïôöüäàç]{2,25}$/";
-$longString = "/^[a-zA-ZéèêëiîïôöüäàçÉÀÂÛÔÎÙÈÊ\"' -,!.;:?()]{20,500}$/";
+$shortString = "/^[A-Z]{0,1}[a-zéèêëiîïôöüäàç -]{2,25}$/";
+$longString = "/^[a-zA-Z0-9éèêëiîïôöüäàçÉÀÂÛÔÎÙÈÊ\"' -,!.;:?()]{20,500}$/";
 $phoneRegex = "/^(0)+[0-9]{1}[ -]{0,1}+[0-9]{2}[ -]{0,1}+[0-9]{2}[ -]{0,1}+[0-9]{2}[ -]{0,1}+[0-9]{2}/";
 $dateRegex = "/^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/";
 $mailRegex = "/^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/";
@@ -37,14 +37,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $errorArray["birthday"] = "Veuillez remplir le champ";
     };
 
-    if (!preg_match($lastNameRegex, $_POST["birthcountry"])) {//=========birthcountry
+    if (!preg_match($shortString, $_POST["birthcountry"])) {//=========birthcountry
         $errorArray["birthcountry"] = "Syntax invalide";
     };
     if (empty($_POST["birthcountry"])) {
         $errorArray["birthcountry"] = "Veuillez remplir le champ";
     };
 
-    if (!preg_match($lastNameRegex, $_POST["nationality"])) {//=========nationality
+    if (!preg_match($shortString, $_POST["nationality"])) {//=========nationality
         $errorArray["nationality"] = "Syntax invalide";
     };
     if (empty($_POST["nationality"])) {
@@ -103,21 +103,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     };
 
     if (!preg_match($longString, $_POST["yourHeroespower"])) {//=========yourHeroespower
-        $errorArray["yourHeroespower"] = "Syntax invalide";
+        $errorArray["yourHeroespower"] = "Syntax invalide seul les caractere (a-z A-Z 0-9 éèêëiîïôöüäàçÉÀÂÛÔÎÙÈÊ \"' -,!.;:?()) sont autorisé";
     };
     if (empty($_POST["yourHeroespower"])) {
         $errorArray["yourHeroespower"] = "Veuillez remplir le champ";
     };
 
     if (!preg_match($longString, $_POST["yourHacks"])) {//=========yourHacks
-        $errorArray["yourHacks"] = "Syntax invalide";
+        $errorArray["yourHacks"] = "Syntax invalide seul les caractere (a-z A-Z 0-9 éèêëiîïôöüäàçÉÀÂÛÔÎÙÈÊ \"' -,!.;:?()) sont autorisé";
     };
     if (empty($_POST["yourHacks"])) {
         $errorArray["yourHacks"] = "Veuillez remplir le champ";
     };
 
     if (!preg_match($longString, $_POST["programExperience"])) {//=========programExperience
-        $errorArray["programExperience"] = "Syntax invalide";
+        $errorArray["programExperience"] = "Syntax invalide seul les caractere (a-z A-Z 0-9 éèêëiîïôöüäàçÉÀÂÛÔÎÙÈÊ \"' -,!.;:?()) sont autorisé";
     };
     if (empty($_POST["programExperience"])) {
         $errorArray["programExperience"] = "Veuillez remplir le champ";
