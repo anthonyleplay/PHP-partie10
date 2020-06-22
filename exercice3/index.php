@@ -4,13 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <title>TP 3</title>
 </head>
 
 <body class="bg-dark">
-    <div class="container bg-white my-3 rounded-lg">
+    <div class="container-fluid ">
         <div class="row justify-content-center">
-            <div class="col-12">
+            <div class="col-11 bg-white my-3 rounded-lg">
                 <div class="m-3 p-2 bg-light border rounded-lg">
                     <h1>TP 3</h1>
                     <p>Faire une fonction qui permet d'afficher les données des tableaux suivants :<br><br>

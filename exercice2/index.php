@@ -41,6 +41,15 @@ require_once 'controller.php';
                             <span class="h4 text-dark"><b>Formulaire d'inscription</b></span>
                         </fieldset>
                         <fieldset class="col-12 col-md-6">
+
+                            <label class="mt-3" for="gender">Civilité : </label><br>
+                            <select class="rounded-lg" id="gender" name="gender" value="<?= isset($_POST["gender"]) ? $_POST["gender"] : "" ?>" required>
+                                <option value="" disabled selected>. . .</option>
+                                <option value="0">M.</option>
+                                <option value="1">Mme</option>
+                            </select><br>
+                            <?= isset($errorArray["gender"]) ? "<span style=\"color: darkred;\">" . $errorArray["gender"] . "</span><br>" : "" ?>
+
                             <label class="mt-3" for="lastname">Nom : </label><br>
                             <input class="rounded-lg" type="text" name="lastname" id="lastname" value="<?= isset($_POST["lastname"]) ? $_POST["lastname"] : "" ?>" placeholder="Dupont" required><br>
                             <?= isset($errorArray["lastname"]) ? "<span style=\"color: darkred;\">" . $errorArray["lastname"] . "</span><br>" : "" ?>
@@ -60,55 +69,6 @@ require_once 'controller.php';
                             <label class="mt-3" for="nationality">Nationalité : </label><br>
                             <input class="rounded-lg" type="text" name="nationality" id="nationality" value="<?= isset($_POST["nationality"]) ? $_POST["nationality"] : "" ?>" placeholder="française" required><br>
                             <?= isset($errorArray["nationality"]) ? "<span style=\"color: darkred;\">" . $errorArray["nationality"] . "</span><br>" : "" ?>
-
-                            <label class="mt-3" for="Address">Adresse : </label><br>
-                            <input class="rounded-lg" type="text" name="Address" id="Address" value="<?= isset($_POST["Address"]) ? $_POST["Address"] : "" ?>" placeholder="1 rue de la paix" required><br>
-                            <?= isset($errorArray["Address"]) ? "<span style=\"color: darkred;\">" . $errorArray["Address"] . "</span><br>" : "" ?>
-
-                            <label class="mt-3" for="yourMail">E-mail : </label><br>
-                            <input class="rounded-lg" type="mail" name="yourMail" id="yourMail" value="<?= isset($_POST["yourMail"]) ? $_POST["yourMail"] : "" ?>" placeholder="aaa@bbb.com" required><br>
-                            <?= isset($errorArray["yourMail"]) ? "<span style=\"color: darkred;\">" . $errorArray["yourMail"] . "</span><br>" : "" ?>
-
-                            <label class="mt-3" for="phone">Téléphone : </label><br>
-                            <input class="rounded-lg" type="text" name="phone" id="phone" value="<?= isset($_POST["phone"]) ? $_POST["phone"] : "" ?>" placeholder="01 02 03 04 05" required><br>
-                            <?= isset($errorArray["phone"]) ? "<span style=\"color: darkred;\">" . $errorArray["phone"] . "</span><br>" : "" ?>
-
-                            <label class="mt-3" for="diploma">Diplôme (sans, Bac, Bac+2, Bac+3 ou supérieur) : </label><br>
-                            <select class="rounded-lg" id="diploma" name="diploma" value="<?= isset($_POST["diploma"]) ? $_POST["diploma"] : "" ?>" required>
-                                <option value="" disabled selected>. . .</option>
-                                <option value="0">sans</option>
-                                <option value="1">Bac</option>
-                                <option value="2">Bac+2</option>
-                                <option value="3">Bac+3</option>
-                                <option value="4">supérieur</option>
-                            </select><br>
-                            <?= isset($errorArray["diploma"]) ? "<span style=\"color: darkred;\">" . $errorArray["diploma"] . "</span><br>" : "" ?>
-
-                        </fieldset>
-                        <fieldset class="col-12 col-md-6">
-                            <label class="mt-3" for="numPE">Numéro pôle emploi : </label><br>
-                            <input class="rounded-lg" type="text" name="numPE" id="numPE" value="<?= isset($_POST["numPE"]) ? $_POST["numPE"] : "" ?>" placeholder="12346567F"><br>
-                            <?= isset($errorArray["numPE"]) ? "<span style=\"color: darkred;\">" . $errorArray["numPE"] . "</span><br>" : "" ?>
-
-                            <label class="mt-3" for="badgenumber">Nombre de badge : </label><br>
-                            <input class="rounded-lg" type="text" name="badgenumber" id="badgenumber" value="<?= isset($_POST["badgenumber"]) ? $_POST["badgenumber"] : "" ?>"><br>
-                            <?= isset($errorArray["badgenumber"]) ? "<span style=\"color: darkred;\">" . $errorArray["badgenumber"] . "</span><br>" : "" ?>
-
-                            <label class="mt-3" for="codecademyLink">Liens codecademy : </label><br>
-                            <input class="rounded-lg" type="text" name="codecademyLink" id="codecademyLink" value="<?= isset($_POST["codecademyLink"]) ? $_POST["codecademyLink"] : "" ?>"><br>
-                            <?= isset($errorArray["codecademyLink"]) ? "<span style=\"color: darkred;\">" . $errorArray["codecademyLink"] . "</span><br>" : "" ?>
-
-                            <label class="mt-3" for="yourHeroespower">Si vous étiez un super héros/une super héroïne, qui seriez-vous et pourquoi ?</label><br>
-                            <textarea class="p-2 rounded-lg" style="width: 80%;" type="text" name="yourHeroespower" id="yourHeroespower" value="<?= isset($_POST["yourHeroespower"]) ? $_POST["yourHeroespower"] : "" ?>" placeholder="Superman car il est super fort ( merci Jean-Kevin )"></textarea><br>
-                            <?= isset($errorArray["yourHeroespower"]) ? "<span style=\"color: darkred;\">" . $errorArray["yourHeroespower"] . "</span><br>" : "" ?>
-
-                            <label class="mt-3" for="yourHacks">Racontez-nous un de vos "hacks" (pas forcément technique ou informatique)</label><br>
-                            <textarea class="p-2 rounded-lg" style="width: 80%;" type="text" name="yourHacks" id="yourHacks" value="<?= isset($_POST["yourHacks"]) ? $_POST["yourHacks"] : "" ?>"></textarea><br>
-                            <?= isset($errorArray["yourHacks"]) ? "<span style=\"color: darkred;\">" . $errorArray["yourHacks"] . "</span><br>" : "" ?>
-
-                            <label class="mt-3" for="programExperience">Avez vous déjà eu une expérience avec la programmation et/ou l'informatique avant de remplir ce formulaire ?</label><br>
-                            <textarea class="p-2 rounded-lg" style="width: 80%;" type="text" name="programExperience" id="programExperience" value="<?= isset($_POST["programExperience"]) ? $_POST["programExperience"] : "" ?>"></textarea><br>
-                            <?= isset($errorArray["programExperience"]) ? "<span style=\"color: darkred;\">" . $errorArray["programExperience"] . "</span><br>" : "" ?>
 
                         </fieldset>
                         <fieldset class="col-12 pt-3">
