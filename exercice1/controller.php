@@ -13,7 +13,8 @@ $mailRegex = "/^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/";
 $urlCodecademyRegex = "/https?:\/\/(www\.)?(codecademy)\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&\/\/=]*)/";
 $poleEmploiRegex = "/[0-9]{7}[a-zA-Z]{1}/";
 $badgesRegex = "/[0-9]{1}+[0]?/";
-$degreeRegex = "/[0-4]{1}/";
+$degreeRegex = "/[1-5]{1}/";
+var_dump($_POST);
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (!preg_match($lastNameRegex, $_POST["lastname"])) { //=========lastname
