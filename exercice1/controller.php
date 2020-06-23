@@ -8,7 +8,7 @@ $addressRegex = "/^[1-9]{1}+[0-9]{0,2}[, ]{1}[ a-zA-Zéèêëiîïôöüäàç]{
 $shortString = "/^[A-Z]{0,1}[a-zéèêëiîïôöüäàç -]{2,25}$/";
 $longString = "/^[a-zA-Z0-9éèêëiîïôöüäàçÉÀÂÛÔÎÙÈÊ\"' -,!.;:?()]{20,500}$/";
 $phoneRegex = "/^(0)+[0-9]{1}[ -]{0,1}+[0-9]{2}[ -]{0,1}+[0-9]{2}[ -]{0,1}+[0-9]{2}[ -]{0,1}+[0-9]{2}/";
-$dateRegex = "/^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/";
+$dateRegex = "/^\d{4}[\/\-](0?[1-9]|1[012])[\/\-](0?[1-9]|[12][0-9]|3[01])$/";
 $mailRegex = "/^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/";
 $urlCodecademyRegex = "/https?:\/\/(www\.)?(codecademy)\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&\/\/=]*)/";
 $poleEmploiRegex = "/[0-9]{7}[a-zA-Z]{1}/";
@@ -51,7 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $errorArray["nationality"] = "Veuillez remplir le champ";
     };
 
-    if (!preg_match($mailRegex, $_POST["yourMail"])) { //=========yourMail
+    if (!var_dump(filter_var($_POST["yourMail"], FILTER_VALIDATE_EMAIL))) { //=========yourMail
         $errorArray["yourMail"] = "Syntax invalide";
     };
     if (empty($_POST["yourMail"])) {

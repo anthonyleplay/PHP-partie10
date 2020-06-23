@@ -59,7 +59,7 @@ require_once 'controller.php';
                             <?= isset($errorArray["firstname"]) ? "<span style=\"color: darkred;\">" . $errorArray["firstname"] . "</span><br>" : "" ?>
 
                             <label class="mt-3" for="birthday">Date de naissance : </label><br>
-                            <input class="rounded-lg" type="text" name="birthday" id="birthday" value="<?= isset($_POST["birthday"]) ? $_POST["birthday"] : "" ?>" placeholder="jj/mm/aaaa" required><br>
+                            <input class="rounded-lg" type="date" name="birthday" id="birthday" value="<?= isset($_POST["birthday"]) ? $_POST["birthday"] : "" ?>" placeholder="jj/mm/aaaa" required><br>
                             <?= isset($errorArray["birthday"]) ? "<span style=\"color: darkred;\">" . $errorArray["birthday"] . "</span><br>" : "" ?>
 
                             <label class="mt-3" for="birthcountry">Pays de naissance : </label><br>
@@ -84,12 +84,12 @@ require_once 'controller.php';
 
                             <label class="mt-3" for="diploma">Diplôme (sans, Bac, Bac+2, Bac+3 ou supérieur) : </label><br>
                             <select class="rounded-lg" id="diploma" name="diploma" value="<?= isset($_POST["diploma"]) ? $_POST["diploma"] : "" ?>" required>
-                                <option value="" disabled selected>. . .</option>
-                                <option value="0">sans</option>
-                                <option value="1">Bac</option>
-                                <option value="2">Bac+2</option>
-                                <option value="3">Bac+3</option>
-                                <option value="4">supérieur</option>
+                                <option value="" disabled <?= !isset($_POST["diploma"]) ? "selected" : "" ?>>. . .</option>
+                                <option value="0" <?= isset($_POST["diploma"]) && $_POST["diploma"] == "0" ? "selected" : "" ?>>sans</option>
+                                <option value="1" <?= isset($_POST["diploma"]) && $_POST["diploma"] == "1" ? "selected" : "" ?>>Bac</option>
+                                <option value="2" <?= isset($_POST["diploma"]) && $_POST["diploma"] == "2" ? "selected" : "" ?>>Bac+2</option>
+                                <option value="3" <?= isset($_POST["diploma"]) && $_POST["diploma"] == "3" ? "selected" : "" ?>>Bac+3</option>
+                                <option value="4" <?= isset($_POST["diploma"]) && $_POST["diploma"] == "4" ? "selected" : "" ?>>supérieur</option>
                             </select><br>
                             <?= isset($errorArray["diploma"]) ? "<span style=\"color: darkred;\">" . $errorArray["diploma"] . "</span><br>" : "" ?>
 
