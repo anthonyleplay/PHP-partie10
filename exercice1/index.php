@@ -108,15 +108,16 @@ require_once 'controller.php';
                             <?= isset($errorArray["codecademyLink"]) ? "<span style=\"color: darkred;\">" . $errorArray["codecademyLink"] . "</span><br>" : "" ?>
 
                             <label class="mt-3" for="yourHeroespower">Si vous étiez un super héros/une super héroïne, qui seriez-vous et pourquoi ?</label><br>
-                            <textarea class="p-2 rounded-lg" style="width: 80%;" type="text" name="yourHeroespower" id="yourHeroespower" value="<?= isset($_POST["yourHeroespower"]) ? $_POST["yourHeroespower"] : "" ?>" placeholder="Superman car il est super fort ( merci Jean-Kevin )"></textarea><br>
+                            <textarea class="p-2 rounded-lg" style="width: 80%;" type="text" name="yourHeroespower" id="yourHeroespower" placeholder="Superman car il est super fort ( merci Jean-Kevin )"><?= isset($_POST["yourHeroespower"]) ? $_POST["yourHeroespower"] : "" ?></textarea><br>
                             <?= isset($errorArray["yourHeroespower"]) ? "<span style=\"color: darkred;\">" . $errorArray["yourHeroespower"] . "</span><br>" : "" ?>
 
                             <label class="mt-3" for="yourHacks">Racontez-nous un de vos "hacks" (pas forcément technique ou informatique)</label><br>
-                            <textarea class="p-2 rounded-lg" style="width: 80%;" type="text" name="yourHacks" id="yourHacks" value="<?= isset($_POST["yourHacks"]) ? $_POST["yourHacks"] : "" ?>"></textarea><br>
+                            <textarea class="p-2 rounded-lg" style="width: 80%;" type="text" name="yourHacks" id="yourHacks"><?= isset($_POST["yourHacks"]) ? $_POST["yourHacks"] : "" ?></textarea><br>
                             <?= isset($errorArray["yourHacks"]) ? "<span style=\"color: darkred;\">" . $errorArray["yourHacks"] . "</span><br>" : "" ?>
 
                             <label class="mt-3" for="programExperience">Avez vous déjà eu une expérience avec la programmation et/ou l'informatique avant de remplir ce formulaire ?</label><br>
-                            <textarea class="p-2 rounded-lg" style="width: 80%;" type="text" name="programExperience" id="programExperience" value="<?= isset($_POST["programExperience"]) ? $_POST["programExperience"] : "" ?>"></textarea><br>
+                            <div>oui : <input type="radio" name="programExperience" value="oui" <?= isset($_POST["programExperience"]) && $_POST["programExperience"] == "oui" ? "checked" : "" ?>></div>
+                            <div>non : <input type="radio" name="programExperience" value="non" <?= isset($_POST["programExperience"]) && $_POST["programExperience"] == "non" ? "checked" : "" ?>></div><br>
                             <?= isset($errorArray["programExperience"]) ? "<span style=\"color: darkred;\">" . $errorArray["programExperience"] . "</span><br>" : "" ?>
 
                         </fieldset>

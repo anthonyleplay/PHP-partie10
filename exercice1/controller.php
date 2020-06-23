@@ -6,7 +6,7 @@ $lastNameRegex = "/^[a-zA-Zéèêëiîïôöüäç ]{1,15}[- \"]{0,1}[a-zA-Zéè
 $firstNameRegex = "/^[a-zA-Zéèêëiîïôöüäç]{2,12}[-]?[a-zA-Zéèêëiîïôöüäç]{2,12}/";
 $addressRegex = "/^[1-9]{1}+[0-9]{0,2}[, ]{1}[ a-zA-Zéèêëiîïôöüäàç]{1,11}[, \"-]{1}?[ a-zA-Zéèêëiîïôöüäàç]{2,12}?[, \"-]{0,1}?[ a-zA-Zéèêëiîïôöüäàç]{0,12}?[, \"-]{0,1}?[ a-zA-Zéèêëiîïôöüäàç]{1,12}?$/";
 $shortString = "/^[A-Z]{0,1}[a-zéèêëiîïôöüäàç -]{2,25}$/";
-$longString = "/^[a-zA-Z0-9éèêëiîïôöüäàçÉÀÂÛÔÎÙÈÊ\"' -,!.;:?()]{20,500}$/";
+$longString = "/^[a-zA-Z0-9éèêëiîïôöüäàçÉÀÂÛÔÎÙÈÊ\"' -,!.;:?()]{10,500}$/";
 $phoneRegex = "/^(0)+[0-9]{1}[ -]{0,1}+[0-9]{2}[ -]{0,1}+[0-9]{2}[ -]{0,1}+[0-9]{2}[ -]{0,1}+[0-9]{2}/";
 $dateRegex = "/^\d{4}[\/\-](0?[1-9]|1[012])[\/\-](0?[1-9]|[12][0-9]|3[01])$/";
 $mailRegex = "/^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/";
@@ -14,6 +14,7 @@ $urlCodecademyRegex = "/https?:\/\/(www\.)?(codecademy)\.[a-z]{2,6}\b([-a-zA-Z0-
 $poleEmploiRegex = "/[0-9]{7}[a-zA-Z]{1}/";
 $badgesRegex = "/[0-9]{1}+[0]?/";
 $degreeRegex = "/[1-5]{1}/";
+$expRegex = "/(oui){1}|(non){1}/";
 var_dump($_POST);
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -52,7 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $errorArray["nationality"] = "Veuillez remplir le champ";
     };
 
-    if (!var_dump(filter_var($_POST["yourMail"], FILTER_VALIDATE_EMAIL))) { //=========yourMail
+    if (var_dump(filter_var($_POST["yourMail"], FILTER_VALIDATE_EMAIL))) { //=========yourMail
         $errorArray["yourMail"] = "Syntax invalide";
     };
     if (empty($_POST["yourMail"])) {
@@ -104,24 +105,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     };
 
     if (!preg_match($longString, $_POST["yourHeroespower"])) { //=========yourHeroespower
-        $errorArray["yourHeroespower"] = "Syntax invalide seul les caractere (a-z A-Z 0-9 éèêëiîïôöüäàçÉÀÂÛÔÎÙÈÊ \"' -,!.;:?()) sont autorisé";
+        $errorArray["yourHeroespower"] = "Syntax invalide seul les caractere (a-z A-Z 0-9 éèêëiîïôöüäàçÉÀÂÛÔÎÙÈÊ \"' -,!.;:?()) sont autorisé (minimum 10 caractere maximum 500)";
     };
     if (empty($_POST["yourHeroespower"])) {
         $errorArray["yourHeroespower"] = "Veuillez remplir le champ";
     };
 
     if (!preg_match($longString, $_POST["yourHacks"])) { //=========yourHacks
-        $errorArray["yourHacks"] = "Syntax invalide seul les caractere (a-z A-Z 0-9 éèêëiîïôöüäàçÉÀÂÛÔÎÙÈÊ \"' -,!.;:?()) sont autorisé";
+        $errorArray["yourHacks"] = "Syntax invalide seul les caractere (a-z A-Z 0-9 éèêëiîïôöüäàçÉÀÂÛÔÎÙÈÊ \"' -,!.;:?()) sont autorisé (minimum 10 caractere maximum 500)";
     };
     if (empty($_POST["yourHacks"])) {
         $errorArray["yourHacks"] = "Veuillez remplir le champ";
     };
 
-    if (!preg_match($longString, $_POST["programExperience"])) { //=========programExperience
-        $errorArray["programExperience"] = "Syntax invalide seul les caractere (a-z A-Z 0-9 éèêëiîïôöüäàçÉÀÂÛÔÎÙÈÊ \"' -,!.;:?()) sont autorisé";
-    };
-    if (empty($_POST["programExperience"])) {
+    if (empty($_POST["programExperience"])) { //=======================programExperience
         $errorArray["programExperience"] = "Veuillez remplir le champ";
+    } else {
+        if (!preg_match($expRegex, $_POST["programExperience"])) {
+            $errorArray["programExperience"] = "Syntax invalide";
+        };
     };
 
     if (empty($errorArray)) {
