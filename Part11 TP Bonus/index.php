@@ -51,7 +51,7 @@ function showResult()
             <input type="submit" name="division" value="/">
             <input class="ml-5" type="submit" name="reset" value="Reset">
           </form>
-          <p class="text-left">Résultat : <?php htmlspecialchars(showResult())  ?></p>
+          <b><p class="text-left my-3 h4">Résultat : <?php htmlspecialchars(showResult())  ?></p></b>
         </div>
       </div>
     </div>
