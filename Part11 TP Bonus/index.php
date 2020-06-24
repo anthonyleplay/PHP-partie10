@@ -24,8 +24,8 @@ function showResult()
       echo "Veuillez remplir les champs avec des nombres";
   };
 };
-
 ?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -37,21 +37,23 @@ function showResult()
 </head>
 
 <body class="bg-dark">
-  <div class="container bg-white my-3 rounded-lg">
+  <div class="container bg-white my-5 rounded-lg">
     <div class="row justify-content-center">
       <div class="col-12">
         <div class="m-3 p-2 bg-light border rounded-lg text-center">
           <h1>Une calculatrice en PHP</h1>
           <form action="" method="post">
-            <input type="text" name="chiffre1" value="<?= isset($_POST["chiffre1"]) && !isset($_POST["reset"]) ? $_POST["chiffre1"] : "" ?>" placeholder="<?= isset($_POST["chiffre1"]) ? (empty($_POST["chiffre1"])? "25" : $_POST["chiffre1"]) : "25" ?>">
-            <input type="text" name="chiffre2" value="<?= isset($_POST["chiffre2"]) && !isset($_POST["reset"]) ? $_POST["chiffre2"] : "" ?>" placeholder="<?= isset($_POST["chiffre2"]) ? (empty($_POST["chiffre2"])? "75" : $_POST["chiffre2"]) : "75" ?>">
+            <input type="text" name="chiffre1" value="<?= isset($_POST["chiffre1"]) && !isset($_POST["reset"]) ? $_POST["chiffre1"] : "" ?>" placeholder="<?= isset($_POST["chiffre1"]) ? (empty($_POST["chiffre1"]) ? "25" : $_POST["chiffre1"]) : "25" ?>">
+            <input type="text" name="chiffre2" value="<?= isset($_POST["chiffre2"]) && !isset($_POST["reset"]) ? $_POST["chiffre2"] : "" ?>" placeholder="<?= isset($_POST["chiffre2"]) ? (empty($_POST["chiffre2"]) ? "75" : $_POST["chiffre2"]) : "75" ?>">
             <input type="submit" name="addition" value="+">
             <input type="submit" name="soustraction" value="-">
             <input type="submit" name="multiplication" value="*">
             <input type="submit" name="division" value="/">
             <input class="ml-5" type="submit" name="reset" value="Reset">
           </form>
-          <b><p class="text-left my-3 h4">Résultat : <?php htmlspecialchars(showResult())  ?></p></b>
+          <b>
+            <p class="text-left my-3 h4">Résultat : <?php htmlspecialchars(showResult()) ?></p>
+          </b>
         </div>
       </div>
     </div>
