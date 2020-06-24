@@ -4,12 +4,9 @@ $portrait2 = array('name' => 'Jean', 'firstname' => 'de La Fontaine', 'portrait'
 $portrait3 = array('name' => 'Pierre', 'firstname' => 'Corneille', 'portrait' => 'http://upload.wikimedia.org/wikipedia/commons/2/2a/Pierre_Corneille_2.jpg');
 $portrait4 = array('name' => 'Jean', 'firstname' => 'Racine', 'portrait' => 'http://upload.wikimedia.org/wikipedia/commons/d/d5/Jean_racine.jpg');
 
-function showcard($array)
-{
+function showcard($array){
     echo $array['name'] . ' ' . $array['firstname'] . '<br><div class=\'col-6\'><img src=\'' . $array['portrait'] . '\' width=\'100%\' alt=\'photo de ' . $array['name'] . ' ' . $array['firstname'] . '\'></div>';
-}
-
-
+};
 ?>
 <!DOCTYPE html>
 <html lang="fr">
