@@ -1,3 +1,16 @@
+<?php
+$portrait1 = array('name' => 'Victor', 'firstname' => 'Hugo', 'portrait' => 'http://upload.wikimedia.org/wikipedia/commons/5/5a/Bonnat_Hugo001z.jpg');
+$portrait2 = array('name' => 'Jean', 'firstname' => 'de La Fontaine', 'portrait' => 'http://upload.wikimedia.org/wikipedia/commons/e/e1/La_Fontaine_par_Rigaud.jpg');
+$portrait3 = array('name' => 'Pierre', 'firstname' => 'Corneille', 'portrait' => 'http://upload.wikimedia.org/wikipedia/commons/2/2a/Pierre_Corneille_2.jpg');
+$portrait4 = array('name' => 'Jean', 'firstname' => 'Racine', 'portrait' => 'http://upload.wikimedia.org/wikipedia/commons/d/d5/Jean_racine.jpg');
+
+function showcard($array)
+{
+    echo $array['name'] . ' ' . $array['firstname'] . '<br><div class=\'col-6\'><img src=\'' . $array['portrait'] . '\' width=\'100%\' alt=\'photo de ' . $array['name'] . ' ' . $array['firstname'] . '\'></div>';
+}
+
+
+?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -23,9 +36,26 @@
                 </div>
             </div>
         </div>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 bg-white my-3 rounded-lg">
+                    <div class="m-3 p-2 bg-light border rounded-lg">
+                        <p><?php showcard($portrait1); ?></p>
+                    </div>
+                    <div class="m-3 p-2 bg-light border rounded-lg">
+                        <p><?php showcard($portrait2); ?></p>
+                    </div>
+                    <div class="m-3 p-2 bg-light border rounded-lg">
+                        <p><?php showcard($portrait3); ?></p>
+                    </div>
+                    <div class="m-3 p-2 bg-light border rounded-lg">
+                        <p><?php showcard($portrait4); ?></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
-
-
 
 
 </body>
