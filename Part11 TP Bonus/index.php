@@ -15,7 +15,11 @@ function showResult()
           echo $_POST["chiffre1"] * $_POST["chiffre2"];
         };
         if (isset($_POST["division"])) {
-          echo $_POST["chiffre1"] / $_POST["chiffre2"];
+          if ($_POST["chiffre2"] == 0){
+            echo "Nop !, on ne peut pas divisé par Zero";
+          }else{
+            echo $_POST["chiffre1"] / $_POST["chiffre2"];
+          };
         };
       } else {
         echo "Nop !, merci d'entrer des nombres dans les cases (max 16 chiffres)";
